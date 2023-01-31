@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap");
+
+$bg-gradient: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.3) 100%
+);
+
+.app__landing {
+    box-sizing: border-box;
+    user-select: none;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    color: white;
+    background: black;
+    font-family: "Cormorant Garamond", serif;
+    text-transform: uppercase;
+
+    a {
+        color: #fff;
+        text-decoration: none;
+    }
+    .app__landing-quote {
+        height: 100%;
+        width: 100%;
+        top: 0;
+        position: fixed;
+        .outer,
+        .inner {
+          width: 100%;
+          height: 100%;
+          overflow-y: hidden;
+        }
+        .outer {
+            .inner {
+                .bg {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                    top: 0;
+                    background-size: cover;
+                    background-position: center;
+                    .section-heading {
+                        font-size: clamp(1rem, 5vw, 5rem);
+                        font-weight: 400;
+                        text-align: center;
+                        letter-spacing: 0.5em;
+                        margin-right: -0.5em;
+                        color: hsl(0, 0, 80%);
+                        max-width: 1200px;
+                        height: 200px;
+                        z-index: 2;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-wrap: wrap;
+                        overflow: hidden;
+                        .word {
+                            margin-right: 1rem;
+                            overflow: hidden;
+                          }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.app__landing-quote:nth-child(1) {
+    .bg {
+        background-image: $bg-gradient,
+          url(https://images.unsplash.com/photo-1617478755490-e21232a5eeaf?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYxNzU1NjM5NA&ixlib=rb-1.2.1&q=75&w=1920);
+      }
+}
+
+.app__landing-quote:nth-child(2) {
+    .bg {
+        background-image: $bg-gradient,
+        url("https://images.unsplash.com/photo-1617128734662-66da6c1d3505?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYxNzc3NTM3MA&ixlib=rb-1.2.1&q=75&w=1920");     
+     }
+}
+.app__landing-quote:nth-child(3) {
+    .bg {
+        background-image: $bg-gradient,
+        url(https://images.unsplash.com/photo-1617438817509-70e91ad264a5?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYxNzU2MDk4Mg&ixlib=rb-1.2.1&q=75&w=1920);
+    }
+}

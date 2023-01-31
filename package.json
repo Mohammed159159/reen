@@ -1,0 +1,11 @@
+{
+  "name": "reen",
+  "version": "1.0.0",
+  "description": "A Unique Photography Portfolio",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["Portfolio", "NextJS", "Sanity.io"],
+  "author": "Mohammed Hany",
+  "license": "ISC"
+}
