@@ -41,7 +41,7 @@ export default function Header() {
     //display if data is available
     if (!user) return <h2 className="head-text">Loading</h2>;
     return (
-        <motion.div className={styles["app__header"]}
+        <motion.div className={styles["app__header"] + " app__header "}
         whileInView={{ x: [-50, 0], opacity: [0, 1]}}
         transition={{duration: 0.5, delay: 0.05, staggerChildren: 0.3}}
         >

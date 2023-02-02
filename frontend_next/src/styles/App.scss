@@ -34,6 +34,7 @@
     text-align: left;
     line-height: 1.5;
     list-style: none;
+    font-weight: 300;
     //color
 
     @media screen and (min-width: 2000px) {
@@ -49,4 +50,8 @@
 
 .hidden {
     display: none;
+}
+
+.absolute {
+    position: absolute;
 }

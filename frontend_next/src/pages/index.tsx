@@ -1,8 +1,9 @@
 import images from "@/contstants/images";
 import Head from "next/head";
-import { Landing, Header } from "@/containers";
+import { Header, Landing } from "@/containers";
 
 export default function Home() {
+    //load quotes and images here
     return (
         <div className="app">
             <Head>
@@ -17,8 +18,7 @@ export default function Home() {
                 />
                 <link rel="icon" href={images.logo.src} />
             </Head>
-            {/* <Landing /> */}
-            <Header />
+            <Landing strings={["Hello", "Finally", "Done"]} NextSection={Header} />
         </div>
     );
 }
