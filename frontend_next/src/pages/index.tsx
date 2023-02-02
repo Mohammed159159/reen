@@ -18,7 +18,7 @@ export default function Home() {
                 />
                 <link rel="icon" href={images.logo.src} />
             </Head>
-            <Landing strings={["Hello", "Finally", "Done"]} NextSection={Header} />
+            <Landing strings={["Hello", "Finally", "Done"]} NextSection={Header} nextSectionId={"header"} />
         </div>
     );
 }

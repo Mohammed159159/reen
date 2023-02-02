@@ -10,7 +10,7 @@ import Header from "../Header/Header";
 //Register Observer plugin from gsap
 gsap.registerPlugin(Observer);
 
-export default function Landing({ strings, NextSection }: { strings: string[], NextSection: React.FunctionComponent }) {
+export default function Landing({ strings, NextSection, nextSectionId}: { strings: string[], NextSection: React.FunctionComponent, nextSectionId: string }) {
     //Set animation control variables
     const animating = useRef(false);
     const currentIndex = useRef(-1);
@@ -166,21 +166,26 @@ export default function Landing({ strings, NextSection }: { strings: string[], N
             )
                 //Animate .bg of nextSection
                 .fromTo(image, { yPercent: 15 * dFactor }, { yPercent: 0 }, 0);
+            
+            //Stop animation and start normal website behavior
             setTimeout(() => {
                 obs.kill(); //kill observer to start normal scrolling
                     document
                         .getElementById("nextSectionContent")
                     ?.style.setProperty("position", "absolute"); //change position fixed  to absolute on nextSectionContent
                     document.getElementById("nextSection")?.style.setProperty("position", "relative")
-                    document.getElementById("landing")?.style.setProperty("display", "none"); //hide .app__landing
+                document.getElementById("landing")?.style.setProperty("display", "none"); //hide .app__landing
+                document.getElementById(nextSectionId)?.classList.add("visible")
             }, duration * 1000)
 
         }
 
+        //Create observer to watch for scrolls
         let obs = Observer.create({
-            type: "wheel,touch,pointer",
-            wheelSpeed: -1,
+            type: "wheel,touch,pointer", //inputs of interest
+            wheelSpeed: -1, //speed threshold
             onUp: () => {
+                //If not animating, check whether to go to the nextSection or the following section in landing
                 !animating.current &&
                     (currentIndex.current == sections.length - 1
                         ? gotoNextSection()
@@ -188,12 +193,14 @@ export default function Landing({ strings, NextSection }: { strings: string[], N
 
             },
             onDown: () => {
+                //If not animating, go to the previous section in landing
                 !animating.current && gotoSection(currentIndex.current - 1, -1);
             },
             tolerance: 10,
             preventDefault: true,
         });
 
+        //Initialize animation at first section of landing
         gotoSection(0, 1);
 
         
