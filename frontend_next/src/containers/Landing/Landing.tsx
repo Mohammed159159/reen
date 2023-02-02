@@ -1,28 +1,31 @@
-import { useRef, useEffect, useCallback } from "react";
-import { gsap } from "gsap";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useRef } from "react";
+import useQuote from "@/hooks/Quote";
+import style from "./Landing.module.scss";
+import Letters from "@/components/Letters";
+import gsap from 'gsap'
 import Observer from "gsap/dist/Observer";
 
-gsap.registerPlugin(Observer);
+gsap.registerPlugin(Observer)
+export default function Landing() {
 
-export default function useLandingAnimation() {
+    const splitQuote = ["Hello World Go Stuff", "Animated with GSAP", "Three"];
+
     const animating = useRef(false);
     const currentIndex = useRef(-1);
 
-        useEffect(() => {
+    useEffect(() => {
+            //get elements to animate
             let sections = document.querySelectorAll("section"),
                 images = document.querySelectorAll(".bg"),
                 headings = gsap.utils.toArray(".section-heading"),
                 outerWrappers = gsap.utils.toArray(".outer"),
                 innerWrappers = gsap.utils.toArray(".inner"),
-                splitHeadings: NodeList[] = [],
                 wrap = gsap.utils.wrap(0, sections.length),
                 splitLetters: NodeList[] = [];
-            console.log(headings[0])            
-            let head, splitheading, splitLetter;
-            headings.forEach((heading, index) => {
+            let head, splitLetter;
+            headings.forEach((_heading, index) => {
                 head = document.querySelector("#head" + index);
-                splitheading = head!.querySelectorAll(".word");
-                splitHeadings.push(splitheading);
                 splitLetter = head!.querySelectorAll(".letter");
                 splitLetters.push(splitLetter);
             });
@@ -39,7 +42,7 @@ export default function useLandingAnimation() {
                     onComplete: () => {
                         animating.current = false;
                     },
-                }); ////
+                });
 
                 if (currentIndex.current >= 0) {
                     // The first time this function runs, current is -1
@@ -90,14 +93,43 @@ export default function useLandingAnimation() {
                 type: "wheel,touch,pointer",
                 wheelSpeed: -1,
                 onUp: () =>
+                {console.log("UP")
                     !animating.current &&
-                    gotoSection(currentIndex.current + 1, 1),
+                    gotoSection(currentIndex.current + 1, 1)},
                 onDown: () =>
+                {
+                    console.log("DOWN")
                     !animating.current &&
-                    gotoSection(currentIndex.current - 1, -1),
+                    gotoSection(currentIndex.current - 1, -1)},
                 tolerance: 10,
                 preventDefault: true,
             });
             gotoSection(0, 1);
-        }, []);
+    }, []);
+    
+    return (
+        <div className={style["app__landing"] + " app__landing "}>
+            {splitQuote.map((quote, index) => (
+                <section className={style[`app__landing-quote`]} key={index}>
+                    <div className={style["outer"] + " outer "}>
+                        <div className={style["inner"] + " inner "}>
+                            <div className={style["bg"] + " bg "}>
+                                <div
+                                    id={"head" + index}
+                                    className={
+                                        style["section-heading"] +
+                                        " section-heading "
+                                    }
+                                >
+                                    {Letters(quote, "word " + style.word, "letter " + style.letter)}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            ))}
+        </div>
+    );
+
+
 }
