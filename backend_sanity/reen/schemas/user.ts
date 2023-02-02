@@ -48,7 +48,7 @@ export default {
             title: 'Socials',
             type: 'array',
             of: [{ type: 'social' }],
-            description: "Add your social media links"
+            description: "Add your social media links",
 
         }
 

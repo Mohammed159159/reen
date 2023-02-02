@@ -8,6 +8,14 @@ export default defineType({
             name: "platform",
             title: "Platform",
             type: "string",
+            options: {
+                list: [
+                    "Facebook",
+                    "Twitter",
+                    "Instagram",
+                    {title: "LinkedIn", value: "LinkedIn"}  
+                ]
+            }
         },
         {
             name: "url",
