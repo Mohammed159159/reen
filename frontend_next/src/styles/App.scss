@@ -1,6 +1,7 @@
 .app {
-    font-family: var(--font-base);
+    font-family: var(--font-base), 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     background: var(--primary-color);
+    font-size: 1.6rem;
 }
 
 //background variations?
@@ -13,7 +14,7 @@
 
 .head-text {
     font-size: 4rem;
-    font-weight: 800;
+    font-weight: 800; 
     color: var(--primary-color); //color
     text-transform: capitalize;
     span {

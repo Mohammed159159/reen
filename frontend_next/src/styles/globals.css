@@ -10,7 +10,7 @@
 
     --background-filter-color: linear-gradient(
         180deg,
-        rgba(0, 0, 0, 0.5) 0%,
+        rgba(0, 0, 0, 0.6) 0%,
         rgba(0, 0, 0, 0.3) 100%
     );
     --background-gradient: linear-gradient(
@@ -27,5 +27,9 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    outline: 0;
+}
+
+html {
     scroll-behavior: smooth;
 }

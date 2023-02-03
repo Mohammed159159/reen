@@ -85,11 +85,11 @@ export default function Header() {
             <div className={styles["app__header-frontfilter"]}></div>
             <div className={styles["app__header-content"]}>
                 <div className={styles["app__header-roles"]}>
-                    {write && (
+                    {true && (
                         <Typewriter
                             onInit={(typewritter) => {
                                 typewritter
-                                    .typeString("Hi, I am a <br>")
+                                    .typeString("I'm a <br>")
                                     .start();
                                 user.roles.forEach((role) => {
                                     typewritter
