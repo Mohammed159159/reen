@@ -1,0 +1,67 @@
+$about-left: 50%;
+$about-gap: 0.6rem;
+$profile-mobile: clamp(50vh, 75vh, 90vh);
+
+.app__about {
+    justify-content: space-between;
+    align-items: stretch;
+    padding-top: $about-gap;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.7);
+    min-height: calc(100vh + $about-gap);
+    @media screen and (max-width: 950px) {  
+        flex-direction: column; 
+        justify-content: stretch;
+        align-items: center;
+        
+    }
+
+    .app__about-right {
+        background: var(--secondary-color);
+        width: calc(100% - $about-left);
+        color: var(--primary-color);
+        padding: 2rem;
+
+        @media screen and (max-width: 950px) {  
+            margin: 0;
+            width: 100%;
+        }
+
+        .app__about-title {
+            div {
+                width: 10rem;
+                height: 7px;
+                background: var(--primary-color);
+                margin: 0.1rem 0 0.8rem 0;
+            }
+        }
+    }
+
+    .app__about-left {
+        width: $about-left;
+        position: relative;
+
+        @media screen and (max-width: 950px) {  
+            width: 100%;
+            height: $profile-mobile;
+        }
+        .app__about-profile {
+            height: 100%;
+            width: 100%;
+            filter: grayscale(0.8);
+            object-fit: cover;
+
+        }
+
+        .app__about-profile--filter {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            background: var(--background-filter-color);
+
+
+        }
+
+    }
+}

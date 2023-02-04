@@ -1,9 +1,32 @@
 import images from "@/contstants/images";
 import Head from "next/head";
-import { Header, Landing } from "@/containers";
+import { About, Header, Landing } from "@/containers";
+import { Data, User, WebsiteImages, Bio } from "@/contstants/types";
+import { useEffect, useState } from "react";
+import { client } from "@/api/client";
+import { motion } from "framer-motion";
+import Loading from "@/components/Loading";
 
 export default function Home() {
-    //load quotes and images here
+    const data = useFetchSanityData();
+    if (!data)
+        return (
+            <>
+                <Head>
+                    <title>REEN</title>
+                    <meta
+                        name="Photography Website"
+                        content="Photography Portfolio Gallery"
+                    />
+                    <meta
+                        name="viewport"
+                        content="width=device-width, initial-scale=1"
+                    />
+                    <link rel="icon" href={images.logo.src} />
+                </Head>
+                <Loading />
+            </>
+        );
     return (
         <div className="app">
             <Head>
@@ -19,7 +42,38 @@ export default function Home() {
                 <link rel="icon" href={images.logo.src} />
             </Head>
             {/* <Landing strings={["Hello", "Finally", "Done"]} NextSection={Header} nextSectionId={"header"} /> */}
-            <Header/>
+            <Header user={data.user} headerImage={data.websiteImages.header} />
+            <About about={data.about.about} profilePic={data.user.profile} />
         </div>
     );
+}
+
+//Get all required data for the application
+const useFetchSanityData = (): Data | undefined => {
+    const websiteImagesList = useSanityFetch<WebsiteImages[]>("images");
+    const users = useSanityFetch<User[]>("user");
+    const abouts = useSanityFetch<Bio[]>("about");
+
+    if (users && websiteImagesList && abouts) {
+        //Assign instances when the data fetched
+        return {
+            user: users[0],
+            websiteImages: websiteImagesList[0],
+            about: abouts[0],
+        };
+    }
+};
+
+//Get sanity data according to a specified type and query
+function useSanityFetch<T>(queryType: string): T | undefined {
+    const [data, setData] = useState<T>();
+    useEffect(() => {
+        const query = `*[_type == '${queryType}']`;
+        client
+            .fetch(query)
+            .then((data: T) => setData(data))
+            .catch((err) => console.log(err));
+    }, []);
+
+    return data;
 }

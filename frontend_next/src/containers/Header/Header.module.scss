@@ -4,22 +4,20 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    position: absolute;
-    z-index: -1;
+    background: transparent;
+    // position: absolute; TODO: CHECK IF IT WILL NOT CAUSE TROUBLE WITH LANDING
 
-    @media screen and (max-width: 700px){
+    @media screen and (max-width: 700px) {
         align-items: center;
     }
 
-
-    .app__header-image{
-        position: absolute;
+    .app__header-image {
+        z-index: -1;
+        position: fixed;
         width: 100%;
         height: 100%;
         filter: grayscale(0.8);
         object-fit: cover;
-    
-        
     }
 
     .app__header-frontfilter {
@@ -28,10 +26,8 @@
         height: 100%;
         background: var(--background-filter-color);
         user-select: none;
-        --webkit-user-select: none
-
+        --webkit-user-select: none;
     }
-
 
     .app__header-content {
         z-index: 1;
@@ -39,20 +35,19 @@
         display: flex;
         flex-direction: column;
 
-        @media screen and (max-width: 700px){
+        @media screen and (max-width: 700px) {
             width: 100%;
             align-items: center;
             gap: 1rem;
             margin-bottom: 5rem;
         }
 
-
         .app__header-roles {
             font-size: 5rem;
             font-weight: 300;
             color: var(--secondary-color);
 
-            @media screen and (max-width: 700px){
+            @media screen and (max-width: 700px) {
                 font-size: 3rem;
                 text-align: center;
             }
@@ -60,12 +55,12 @@
 
         .app__header-name {
             font-weight: 500;
-            @media screen and (max-width: 700px){
+            background: var(--container-color);
+            border-radius: 0.2rem;
+            padding: 0rem 0.55rem;
+            width: fit-content;
+            @media screen and (max-width: 700px) {
                 font-size: 2.5rem;
-                width: 100%;
-                background: rgba(255, 255, 255, 0.25);
-                border-radius: 0.2rem;
-                padding: 0.15rem;
                 text-align: center;
             }
         }
@@ -74,7 +69,6 @@
             list-style-type: none;
             display: flex;
             li {
-                
                 margin: 1rem 1rem 0 0;
 
                 a {
@@ -82,15 +76,11 @@
                     color: var(--secondary-color);
                     transition: 0.3s;
                     &:hover {
-                        color: var(--primary-color);
+                        color: var(--container-color);
+                        font-size: 1.8rem;
                     }
-
                 }
-
-                
             }
         }
     }
-
-    
 }

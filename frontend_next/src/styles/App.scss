@@ -1,10 +1,16 @@
 .app {
     font-family: var(--font-base), 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background: var(--primary-color);
     font-size: 1.6rem;
+    color: var(--secondary-color);
 }
 
-//background variations?
+.primary-bg {
+    background-color: var(--primary-color);
+}
+
+.secondary-bg {
+    background-color: var(--secondary-color);
+}
 
 .app__flex {
     display: flex;
@@ -14,7 +20,7 @@
 
 .head-text {
     font-size: 4rem;
-    font-weight: 800; 
+    font-weight: 500; 
     color: var(--primary-color); //color
     text-transform: capitalize;
     span {
@@ -31,11 +37,12 @@
 }
 
 .p-text {
-    font-size: 0.9rem;
+    font-size: 1.3rem;
     text-align: left;
     line-height: 1.5;
     list-style: none;
     font-weight: 300;
+    white-space: pre-wrap;
     //color
 
     @media screen and (min-width: 2000px) {

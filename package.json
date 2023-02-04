@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "A Unique Photography Portfolio",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "back:dev": "cd ./backend_sanity/reen/ && npm run dev",
+    "front:dev": "cd ./frontend_next/ && npm run dev"
   },
-  "keywords": ["Portfolio", "NextJS", "Sanity.io"],
+  "keywords": ["Portfolio", "NextJS", "Sanity.io", "Photography"],
   "author": "Mohammed Hany",
   "license": "ISC"
 }
