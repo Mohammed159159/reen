@@ -10,8 +10,8 @@ export default {
             options: {hotspot: true}
         },
         {
-            name:'footer',
-            title:'Footer',
+            name:'contact',
+            title:'Contact',
             type: 'image',
             options: {hotspot: true}
         },

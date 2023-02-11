@@ -1,9 +1,22 @@
 import images from "@/contstants/images";
 import { motion } from "framer-motion";
+import Head from "next/head";
 
-export default function Loading() {
+export default function Loading({title}: {title: string}) {
     return (
         <>
+            <Head>
+                <title>{title}</title>
+                <meta
+                    name="Photography Website"
+                    content="Photography Portfolio Gallery"
+                />
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1"
+                />
+                <link rel="icon" href={images.logo.src} />
+            </Head>
             <motion.img
                 whileInView={{ rotate: [0, 90, 180, 360], scale: [1, 0.85, 1] }}
                 transition={{

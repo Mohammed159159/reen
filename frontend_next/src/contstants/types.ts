@@ -14,21 +14,26 @@ type Social = {
 };
 
 type WebsiteImages = {
-    header: string,
-    footer: string
-}
+    header: string;
+    contact: string;
+};
 
 type Bio = {
-    about: string
-}
+    about: string;
+};
 
 type Data = {
-    user: User,
-    websiteImages: WebsiteImages,
-    about: Bio
-}
+    user: User;
+    websiteImages: WebsiteImages;
+    about: Bio;
+};
 
-export type {
-    User, WebsiteImages, Data, Bio
-}
+type FormData = {
+    name: string;
+    email: string;
+    message: string;
+};
 
+type Contact = FormData & { _type: string };
+
+export type { User, WebsiteImages, Data, Bio, FormData, Contact };

@@ -1,0 +1,122 @@
+$left-width: 50%;
+$border: 28px;
+$shadow: 0 0 $border rgba(1 1 1 / 0.1);
+.app__contact {
+    justify-content: space-between;
+    align-items: stretch;
+    min-height: 100vh;
+    overflow: hidden;
+    
+    background: var(--secondary-color);
+    @media screen and (max-width: 700px){
+        flex-direction: column;
+    }   
+
+    .app__contact-left {
+        width: $left-width;
+        margin-left: 1rem;
+        color: black;
+        @media screen and (max-width: 700px){
+            width: 100%;
+            margin: 0;
+        }
+        .app__contact-links {
+            margin-bottom: 2.6rem;
+            margin-top: 0.4rem;
+            width: 100%;
+        @media screen and (max-width: 700px){
+            padding: 0 0.5rem 0;
+
+        }
+
+            .phone,
+            .email {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                padding: 0.2rem 1.3rem;
+                transition: 0.3s;
+                a {
+                    color: var(--primary-color);
+                    text-decoration: none;
+                }
+                svg {
+                    color: var(--primary-color);
+                    height: 75px;
+                }
+
+                &:hover {
+                    box-shadow: $shadow;
+                }
+            }
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+
+            input,
+            textarea {
+                border: none;
+                border-radius: 0.5rem 0 0;
+                padding: 1.3rem;
+                background: var(--secondary-color);
+                font-family: var(--font-base);
+                font-size: 1.3rem;
+                transition: box-shadow 0.3s ease-in-out;
+
+                // border-bottom: solid 1px rgba(1 1 1 / 0.1);
+                &:hover,
+                &:focus {
+                    box-shadow: $shadow;
+                }
+            }
+
+            button {
+                border: none;
+                background-color: var(--primary-color);
+                color: white;
+                padding: 1rem;
+                font-family: var(--font-base);
+                font-size: 1.3rem;
+                margin-bottom: 0.5rem;
+                cursor: pointer;
+                border-radius: 0.3rem;
+                transition: all 0.3s ease-in-out;
+                width: 99%;
+
+                &:hover {
+                    background: white;
+                    color: var(--primary-color);
+                    box-shadow: $shadow;
+                }
+
+                @media screen and (max-width: 700px){
+                    align-self: center;
+                    width: 90%;
+                    
+                }
+            }
+        }
+    }
+    .app__contact-right {
+        position: relative;
+        display: flex;
+        align-items: stretch;
+        height: 100vh;
+        width: $left-width;
+        img {
+            width: 100%;
+            object-fit: cover;
+        }
+
+        @media screen and (max-width: 700px){
+            order: -1;
+            width: 100%;
+            min-height: auto;
+            height: 30vh;
+        }
+    }
+}
