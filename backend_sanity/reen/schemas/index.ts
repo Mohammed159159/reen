@@ -5,5 +5,6 @@ import images from "./images";
 import image from "./objects/image";
 import socials from "./objects/socials";
 import user from "./user";
-
-export const schemaTypes = [user, about, gallery, contact, images, image, socials]
+import standards from "./standards"
+import standard from "./objects/standard";
+export const schemaTypes = [user, about, standards, gallery, contact, images, image, socials, standard]

@@ -1,4 +1,6 @@
 //Define types of sanity data
+
+//Types for user data and preferences
 type User = {
     name: string;
     phone: string;
@@ -22,12 +24,24 @@ type Bio = {
     about: string;
 };
 
+type WorkStyle =  {
+    standards: Standard[];
+    styles: string[];
+}
+
+type Standard = {
+    title: string;
+    description: string
+}
 type Data = {
     user: User;
     websiteImages: WebsiteImages;
     about: Bio;
+    workStyle: WorkStyle
 };
 
+
+//Types for collecting contact messages
 type FormData = {
     name: string;
     email: string;
@@ -36,4 +50,4 @@ type FormData = {
 
 type Contact = FormData & { _type: string };
 
-export type { User, WebsiteImages, Data, Bio, FormData, Contact };
+export type { User, WebsiteImages, Data, Bio, FormData, Contact, WorkStyle };

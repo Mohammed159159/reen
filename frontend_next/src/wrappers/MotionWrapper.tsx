@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import React from "react";
 
-export default function MotionWrapper(Component: React.FunctionComponent) {
+const MotionWrapper = (Component: React.FunctionComponent) => function HOC() {
     return (
-        <motion.div
+            <motion.div
             whileInView={{ y: [100, 50, 0], opacity: [0, 0, 1] }}
             transition={{ duration: 0.5 }}
             className="app__wrapper"
@@ -12,3 +12,5 @@ export default function MotionWrapper(Component: React.FunctionComponent) {
         </motion.div>
     ); 
 }
+
+export default MotionWrapper

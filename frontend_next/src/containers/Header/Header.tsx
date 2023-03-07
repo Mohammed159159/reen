@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import gsap from "gsap";
 import Observer from "gsap/dist/Observer";
 import { User } from "@/contstants/types";
-import icons from "@/contstants/icons";
+import {socialIcons as icons} from "@/contstants/icons";
 
 export default function Header({ user, headerImage }: { user: User, headerImage: string }) {
     const startTyping = useStartTypeWritinig()

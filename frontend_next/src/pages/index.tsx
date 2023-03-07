@@ -1,7 +1,7 @@
 import images from "@/contstants/images";
 import Head from "next/head";
-import { About, Contact, Header, Landing } from "@/containers";
-import { Data, User, WebsiteImages, Bio } from "@/contstants/types";
+import { About, Contact, Header, Landing, Work } from "@/containers";
+import { Data, User, WebsiteImages, Bio, WorkStyle } from "@/contstants/types";
 import { useEffect, useState } from "react";
 import { client } from "@/api/client";
 import Loading from "@/components/Loading";
@@ -32,7 +32,7 @@ export default function Home() {
             {/* <Landing strings={["Hello", "Finally", "Done"]} NextSection={Header} nextSectionId={"header"} /> */}
             <Header user={data.user} headerImage={data.websiteImages.header} />
             <About about={data.about.about} profilePic={data.user.profile} />
-            <div style={{height: '100vh', background: 'var(--primary-color)'}}/>
+            <Work workStyle={data.workStyle} />
             <Contact user={data.user} contactImage={data.websiteImages.contact} />
         </div>
     );
@@ -43,14 +43,17 @@ const useFetchSanityData = (): Data | undefined => {
     const websiteImagesList = useSanityFetch<WebsiteImages[]>("images");
     const users = useSanityFetch<User[]>("user");
     const abouts = useSanityFetch<Bio[]>("about");
+    const workStyles = useSanityFetch<WorkStyle[]>("workStyle");
 
-    if (users && websiteImagesList && abouts) {
+    if (users && websiteImagesList && abouts && workStyles) {
         //Assign instances when the data fetched
         return {
             user: users[0],
             websiteImages: websiteImagesList[0],
             about: abouts[0],
+            workStyle: workStyles[0]
         };
+        
     }
 };
 
